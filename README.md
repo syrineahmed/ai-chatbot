@@ -38,3 +38,7 @@ streamlit run app.py
 
 ## Author
 Syrine Ahmed — [GitHub](https://github.com/syrineahmed)
+
+## Preview
+![App Screenshot](screenshot.jpg)
+![Demo](demo.gif)
