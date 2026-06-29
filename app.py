@@ -6,37 +6,15 @@ st.set_page_config(
     page_icon="🤖",
     layout="centered"
 )
-st.markdown("""
-<style>
-.user-message {
-    background: #e3f2fd;
-    border-radius: 15px 15px 0 15px;
-    padding: 12px 16px;
-    margin: 8px 0;
-    margin-left: 20%;
-    color: #1565c0;
-    font-size: 14px;
-}
-.bot-message {
-    background: #f5f5f5;
-    border-radius: 15px 15px 15px 0;
-    padding: 12px 16px;
-    margin: 8px 0;
-    margin-right: 20%;
-    color: #333;
-    font-size: 14px;
-}
-.message-label {
-    font-size: 11px;
-    color: #888;
-    margin-bottom: 2px;
-}
-</style>
-""", unsafe_allow_html=True)
+
+def load_css():
+    with open("styles.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+load_css()
 
 st.title("🤖 AI Chatbot")
 
-#sidebar setting
 with st.sidebar:
     st.markdown("### ⚙️ Settings")
     personality = st.selectbox("🎭 Personality", get_personalities())
@@ -54,18 +32,16 @@ with st.sidebar:
     - **General** → Any question!
     """)
 
-# Initialize messages
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
 if "last_personality" not in st.session_state:
     st.session_state.last_personality = personality
 
-# Clear messages when personality changes
 if st.session_state.last_personality != personality:
     st.session_state.messages = []
     st.session_state.last_personality = personality
-# Display conversation
+
 for message in st.session_state.messages:
     if message["role"] == "user":
         st.markdown(f"""
@@ -78,7 +54,6 @@ for message in st.session_state.messages:
         <div class="bot-message">{message["content"]}</div>
         """, unsafe_allow_html=True)
 
-# Input
 user_input = st.chat_input("Type your message...")
 
 if user_input:
