@@ -42,3 +42,6 @@ Syrine Ahmed — [GitHub](https://github.com/syrineahmed)
 ## Preview
 ![App Screenshot](screenshot.jpg)
 ![Demo](demo.gif)
+
+## 🌐 Live Demo
+👉 [Try it here](https://ai-chatbot-syrineahmed.streamlit.app/)
